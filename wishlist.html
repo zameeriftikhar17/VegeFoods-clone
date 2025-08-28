@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Wishlist - Vegefoods</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background: #fff;
+    }
+   
+      /* Reset + font */
+body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0;}
+
+/* Topbar */
+.topbar {
+  background: #82ae46;
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 0;
+}
+.topbar .container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+}
+.topbar-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.topbar a { color: #fff; text-decoration: none; }
+.topbar a:hover { text-decoration: underline; }
+/* Navbar */
+nav {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  position: relative;
+}
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color:#82ae46;
+  letter-spacing: 1px;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li { position: relative; }
+.nav-links a {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.2s ease;
+}
+.nav-links a:hover,
+.nav-links a.active { color:#82ae46; }
+
+.menu-toggle {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Dropdown hidden by default */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 10px 0;
+  min-width: 180px;
+  z-index: 10;
+}
+.dropdown-menu li { padding: 0; }
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: #000;
+  font-size: 14px;
+}
+.dropdown-menu a:hover {
+  background: #f8f9fa;
+  color: #82ae46;
+}
+
+/* When dropdown is open */
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    z-index: 1000;
+  }
+  .nav-links.show { display: flex; }
+
+  .nav-links a {
+    padding: 12px 0;
+    font-size: 15px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  /* mobile dropdown inline */
+  .dropdown-menu {
+    position: static;
+    background: #f8f6f6;
+    box-shadow: none;
+    padding-left: 15px;
+  }
+}
+
+    /* Hero Section */
+    .hero {
+      background: url('images/bg_1.jpg') center/cover no-repeat;
+      padding: 80px 0;
+      text-align: center;
+      color: #fff;
+    }
+    .hero h1 {
+      font-size: 40px;
+      margin: 0;
+      font-weight: 700;
+    }
+    .hero p {
+      margin-bottom: 10px;
+    }
+    .hero p a {
+      color: #fff;
+      
+    }
+
+    /* Wishlist Table */
+    .wishlist-container {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 15px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+    }
+    thead {
+      background: #82ae46;
+      color: #fff;
+    }
+    thead th {
+      padding: 14px;
+      font-weight: 600;
+      text-align: center;
+    }
+    tbody td {
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+      vertical-align: middle;
+      text-align: center;
+    }
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .remove-btn {
+      background: #fff;
+      border: 1px solid #ccc;
+      color: #333;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+    .remove-btn:hover {
+      background: #f8d7da;
+      border-color: #f5c2c7;
+      color: #b02a37;
+    }
+    .product-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-align: left;
+    }
+    .product-info img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .product-info h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .product-info p {
+      margin: 3px 0 0;
+      font-size: 13px;
+      color: #666;
+    }
+    .price, .total {
+      font-weight: 600;
+      color: #333;
+    }
+    .quantity input {
+      width: 60px;
+      text-align: center;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    /* Newsletter */
+    .newsletter {
+      background: #f8f9fa;
+      padding: 40px 15px;
+      text-align: center;
+    }
+    .newsletter h2 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .newsletter form {
+      margin-top: 15px;
+    }
+    .newsletter input[type="text"] {
+      padding: 10px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 3px 0 0 3px;
+    }
+    .newsletter input[type="submit"] {
+      padding: 10px 20px;
+      border: none;
+      background: #82ae46;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 0 3px 3px 0;
+    }
+    .newsletter input[type="submit"]:hover {
+      background: #6d933c;
+    }
+
+     /* Footer */
+    footer{background:#fff;color:#333;padding:70px 20px 30px;}
+    footer .footer-container{max-width:1200px;margin:auto;}
+    footer .footer-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px;margin-bottom:40px;}
+    footer h2{font-size:16px;font-weight:600;margin-bottom:15px;}
+    footer p,footer li,footer a{font-size:14px;color:#666;text-decoration:none;line-height:1.8;}
+    footer ul{list-style:none;padding:0;margin:0;}
+    footer .social a{width:35px;height:35px;border:1px solid #ccc;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#333;font-size:14px;transition:0.3s;}
+    footer .social a:hover{background:#82ae46;color:#fff;border-color:#82ae46;}
+    footer .footer-bottom{text-align:center;border-top:1px solid #eee;padding-top:20px;font-size:14px;color:#777;}
+    @media(max-width:768px){.cart-forms{flex-direction:column;}footer .footer-top{flex-direction:column;}}
+
+    /* Responsive */
+    @media(max-width:768px){
+      .product-info {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      thead {display: none;}
+      table, tbody, tr, td {display: block; width: 100%;}
+      td {text-align: left; padding: 10px;}
+      td:before {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+      }
+      td:nth-child(2):before {content: "Product";}
+      td:nth-child(3):before {content: "Price";}
+      td:nth-child(4):before {content: "Quantity";}
+      td:nth-child(5):before {content: "Total";}
+    }
+  </style>
+</head>
+<body>
+
+ <!-- Topbar -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-item">
+      <i class="fas fa-phone-alt"></i>
+      <a href="tel:+1235235598">+1235 2355 98</a>
+    </div>
+    <div class="topbar-item">
+      <i class="fas fa-envelope"></i>
+      <a href="mailto:youremail@email.com">youremail@email.com</a>
+    </div>
+    <div class="topbar-item">
+      <i class="fas fa-truck"></i>
+      3-5 Business days delivery & Free Returns
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo">VEGEFOODS</div>
+  <div class="menu-toggle" id="mobile-menu" onclick="toggleMenu()">☰ MENU</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="navbar-brand">Home</a></li>
+    <li class="dropdown">
+      <a href="#">Shop ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="wishlist.html" class="active">Wishlist</a></li>
+        <li><a href="single-product.html">Single Product</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="cart.html">🛒 [0]</a></li>
+  </ul>
+</nav>
+ 
+
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <p><a href="index.html">Home</a> > Wishlist</p>
+    <h1>My Wishlist</h1>
+  </div>
+
+  <!-- Wishlist Table -->
+ <div class="wishlist-container">
+    <table>
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th>Product List</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><button class="remove-btn">×</button></td>
+          <td>
+            <div class="product-info">
+              <img src="images/product-1.jpg" alt="Bell Pepper">
+              <div>
+                <h3>Bell Pepper</h3>
+                <p>Far far away, behind the word mountains,<br> far from the countries</p>
+              </div>
+            </div>
+          </td>
+          <td class="price">$4.90</td>
+          <td class="quantity"><input type="number" value="1" min="1"></td>
+          <td class="total">$4.90</td>
+        </tr>
+
+        <tr>
+          <td><button class="remove-btn">×</button></td>
+          <td>
+            <div class="product-info">
+              <img src="images/product-2.jpg" alt="Bell Pepper">
+              <div>
+                <h3>Bell Pepper</h3>
+                <p>Far far away, behind the word mountains,<br> far from the countries</p>
+              </div>
+            </div>
+          </td>
+          <td class="price">$15.70</td>
+          <td class="quantity"><input type="number" value="1" min="1"></td>
+          <td class="total">$15.70</td>
+        </tr>
+
+        <tr>
+          <td><button class="remove-btn">×</button></td>
+          <td>
+            <div class="product-info">
+              <img src="images/product-3.jpg" alt="Bell Pepper">
+              <div>
+                <h3>Bell Pepper</h3>
+                <p>Far far away, behind the word mountains,<br> far from the countries</p>
+              </div>
+            </div>
+          </td>
+          <td class="price">$15.70</td>
+          <td class="quantity"><input type="number" value="1" min="1"></td>
+          <td class="total">$15.70</td>
+        </tr>
+
+        <tr>
+          <td><button class="remove-btn">×</button></td>
+          <td>
+            <div class="product-info">
+              <img src="images/product-4.jpg" alt="Bell Pepper">
+              <div>
+                <h3>Bell Pepper</h3>
+                <p>Far far away, behind the word mountains,<br> far from the countries</p>
+              </div>
+            </div>
+          </td>
+          <td class="price">$15.70</td>
+          <td class="quantity"><input type="number" value="1" min="1"></td>
+          <td class="total">$15.70</td>
+        </tr>
+
+        <tr>
+          <td><button class="remove-btn">×</button></td>
+          <td>
+            <div class="product-info">
+              <img src="images/product-5.jpg" alt="Bell Pepper">
+              <div>
+                <h3>Bell Pepper</h3>
+                <p>Far far away, behind the word mountains,<br> far from the countries</p>
+              </div>
+            </div>
+          </td>
+          <td class="price">$15.70</td>
+          <td class="quantity"><input type="number" value="1" min="1"></td>
+          <td class="total">$15.70</td>
+        </tr>
+
+        <tr>
+          <td><button class="remove-btn">×</button></td>
+          <td>
+            <div class="product-info">
+              <img src="images/product-6.jpg" alt="Bell Pepper">
+              <div>
+                <h3>Bell Pepper</h3>
+                <p>Far far away, behind the word mountains,<br> far from the countries</p>
+              </div>
+            </div>
+          </td>
+          <td class="price">$15.70</td>
+          <td class="quantity"><input type="number" value="1" min="1"></td>
+          <td class="total">$15.70</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Newsletter -->
+  <section style="padding:50px 0;background:#f9f9f9;">
+  <div style="max-width:1100px;margin:0 auto;padding:30px;background:#fff;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.08);">
+    
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;">
+      
+      <!-- Left Text -->
+      <div style="flex:1;min-width:280px;">
+        <h2 style="font-size:24px;font-weight:700;color:#333;margin-bottom:8px;">Subscribe to our Newsletter</h2>
+        <span style="font-size:15px;color:#666;">Get e-mail updates about our latest shops and special offers</span>
+      </div>
+      
+      <!-- Right Form -->
+      <div style="flex:1;min-width:280px;">
+        <form action="#" style="display:flex;gap:10px;align-items:center;">
+          <input type="email" placeholder="Enter email address" 
+                 style="flex:1;padding:12px 15px;border:1px solid #ddd;border-radius:30px;font-size:15px;outline:none;">
+          <input type="submit" value="Subscribe" 
+                 style="background:#82ae46;color:#fff;border:none;padding:12px 25px;border-radius:30px;font-weight:600;cursor:pointer;transition:0.3s;">
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Footer -->
+   <footer>
+    <div class="footer-container">
+      <div class="footer-top">
+        <!-- Column 1 -->
+        <div style="flex:1; min-width:220px;">
+          <h2 style="font-size:18px; font-weight:700; margin-bottom:15px;">Vegefoods</h2>
+          <p style="font-size:14px; line-height:1.8; color:#666;">
+            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.
+          </p>
+          <div class="social" style="display:flex; gap:14px; margin-top:20px;">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div style="flex:1; min-width:180px;">
+          <h2>Menu</h2>
+          <ul>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Journal</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div style="flex:1; min-width:200px;">
+          <h2>Help</h2>
+          <ul>
+            <li><a href="#">Shipping Information</a></li>
+            <li><a href="#">Returns & Exchange</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4 -->
+        <div style="flex:1; min-width:220px;">
+          <h2>Have a Questions?</h2>
+          <ul>
+            <li style="margin-bottom:8px;">
+              <i class="fas fa-map-marker-alt" style="margin-right:8px;color:#82ae46;"></i>
+              203 Fake St. Mountain View, San Francisco, USA
+            </li>
+            <li style="margin-bottom:8px;">
+              <i class="fas fa-phone" style="margin-right:8px;color:#82ae46;"></i>
+              <a href="tel://23923929210">+2 392 3929 210</a>
+            </li>
+            <li>
+              <i class="fas fa-envelope" style="margin-right:8px;color:#82ae46;"></i>
+              <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
+        All rights reserved | Made with <span style="color:#e63946;">❤</span> by 
+        <a href="https://colorlib.com" target="_blank" style="color:#82ae46;">Colorlib</a>
+      </div>
+    </div>
+  </footer>
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+// dropdown toggle on click (desktop + mobile)
+document.querySelectorAll('.dropdown > a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault(); // stop link jump
+    this.parentElement.classList.toggle('open');
+  });
+});
+</script>
+
+</body>
+</html>

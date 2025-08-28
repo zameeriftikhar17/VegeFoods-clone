@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vegefoods Cart</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+    body{background:#fff;color:#000;}
+
+    
+      /* Reset + font */
+body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0;}
+
+/* Topbar */
+.topbar {
+  background: #82ae46;
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 0;
+}
+.topbar .container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+}
+.topbar-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.topbar a { color: #fff; text-decoration: none; }
+.topbar a:hover { text-decoration: underline; }
+/* Navbar */
+nav {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  position: relative;
+}
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color:#82ae46;
+  letter-spacing: 1px;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li { position: relative; }
+.nav-links a {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.2s ease;
+}
+.nav-links a:hover,
+.nav-links a.active { color:#82ae46; }
+
+.menu-toggle {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Dropdown hidden by default */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 10px 0;
+  min-width: 180px;
+  z-index: 10;
+}
+.dropdown-menu li { padding: 0; }
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: #000;
+  font-size: 14px;
+}
+.dropdown-menu a:hover {
+  background: #f8f9fa;
+  color: #82ae46;
+}
+
+/* When dropdown is open */
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    z-index: 1000;
+  }
+  .nav-links.show { display: flex; }
+
+  .nav-links a {
+    padding: 12px 0;
+    font-size: 15px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  /* mobile dropdown inline */
+  .dropdown-menu {
+    position: static;
+    background: #f8f6f6;
+    box-shadow: none;
+    padding-left: 15px;
+  }
+}
+
+    /* Hero */
+    .hero-wrap{background-size:cover;background-position:center;padding:100px 20px;text-align:center;color:#fff;}
+    .breadcrumbs{margin-bottom:10px;font-size:16px;}
+    .bread{font-size:40px;font-weight:bold;}
+
+    /* Cart Section */
+    .cart-section{max-width:1200px;margin:50px auto;padding:0 20px;}
+    table{width:100%;border-collapse:collapse;margin-bottom:30px;}
+    thead{background:#8BC34A;color:#fff;}
+    thead th{padding:20px;font-weight:600;text-align:left;}
+    tbody td{padding:20px;border-bottom:1px solid #ddd;vertical-align:middle;}
+    tbody td img{width:70px;height:70px;object-fit:cover;margin-right:10px;}
+    tbody td input[type=text]{width:60px;padding:6px;text-align:center;border:1px solid #ccc;border-radius:4px;}
+
+    /* Buttons */
+    .btn{background:#8BC34A;color:#fff;padding:10px 20px;border:none;border-radius:20px;cursor:pointer;font-size:14px;margin-top:10px;text-decoration:none;display:inline-block;}
+    .btn:hover{background:#7CB342;}
+
+   /* Cart Forms */
+.cart-forms {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.cart-form {
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 250px;
+}
+
+.cart-form h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.cart-form p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.cart-form input[type=text] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.cart-totals p {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.cart-totals .total {
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+
+    /* Newsletter */
+    .newsletter{padding:70px 20px;background:#f9f9f9;}
+    .newsletter-box{max-width:1100px;margin:0 auto;padding:40px;background:#fff;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.08);}
+    .newsletter-flex{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;}
+    .newsletter h2{font-size:24px;font-weight:700;color:#333;margin-bottom:8px;}
+    .newsletter span{font-size:15px;color:#666;}
+    .newsletter form{display:flex;gap:10px;align-items:center;}
+    .newsletter input[type=email]{flex:1;padding:12px 15px;border:1px solid #ddd;border-radius:30px;font-size:15px;}
+    .newsletter input[type=submit]{background:#82ae46;color:#fff;border:none;padding:12px 25px;border-radius:30px;font-weight:600;cursor:pointer;transition:0.3s;}
+    .newsletter input[type=submit]:hover{background:#6f933c;}
+
+    /* Footer */
+    footer{background:#fff;color:#333;padding:70px 20px 30px;}
+    footer .footer-container{max-width:1200px;margin:auto;}
+    footer .footer-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px;margin-bottom:40px;}
+    footer h2{font-size:16px;font-weight:600;margin-bottom:15px;}
+    footer p,footer li,footer a{font-size:14px;color:#666;text-decoration:none;line-height:1.8;}
+    footer ul{list-style:none;padding:0;margin:0;}
+    footer .social a{width:35px;height:35px;border:1px solid #ccc;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#333;font-size:14px;transition:0.3s;}
+    footer .social a:hover{background:#82ae46;color:#fff;border-color:#82ae46;}
+    footer .footer-bottom{text-align:center;border-top:1px solid #eee;padding-top:20px;font-size:14px;color:#777;}
+    @media(max-width:768px){.cart-forms{flex-direction:column;}footer .footer-top{flex-direction:column;}}
+  </style>
+</head>
+<body>
+
+ <!-- Topbar -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-item">
+      <i class="fas fa-phone-alt"></i>
+      <a href="tel:+1235235598">+1235 2355 98</a>
+    </div>
+    <div class="topbar-item">
+      <i class="fas fa-envelope"></i>
+      <a href="mailto:youremail@email.com">youremail@email.com</a>
+    </div>
+    <div class="topbar-item">
+      <i class="fas fa-truck"></i>
+      3-5 Business days delivery & Free Returns
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo">VEGEFOODS</div>
+  <div class="menu-toggle" id="mobile-menu" onclick="toggleMenu()">☰ MENU</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="navbar-brand">Home</a></li>
+    <li class="dropdown">
+      <a href="#">Shop ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="wishlist.html">Wishlist</a></li>
+        <li><a href="single-product.html">Single Product</a></li>
+        <li><a href="cart.html"class="active">Cart</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="cart.html" class="active">🛒 [0]</a></li>
+  </ul>
+</nav>
+ 
+
+
+
+     
+
+  <!-- Hero -->
+  <div class="hero-wrap" style="background-image:url('images/bg_1.jpg');">
+    <p class="breadcrumbs"><span><a href="index.html">Home</a></span> <span>Cart</span></p>
+    <h1 class="bread">My Cart</h1>
+  </div>
+
+  <!-- Cart Table -->
+  <section class="cart-section">
+    <div class="cart-list">
+      <table>
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th>Product name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#">✖</a></td>
+            <td><img src="images/product-3.jpg"> Bell Pepper <br><small>Far far away, behind the word mountains</small></td>
+            <td>$4.90</td>
+            <td><input type="text" value="1"></td>
+            <td>$4.90</td>
+          </tr>
+          <tr>
+            <td><a href="#">✖</a></td>
+            <td><img src="images/product-4.jpg"> Purple Cabbage <br><small>Far far away, behind the word mountains</small></td>
+            <td>$15.70</td>
+            <td><input type="text" value="1"></td>
+            <td>$15.70</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cart-forms">
+        <div class="cart-form">
+          <h3>Coupon Code</h3>
+          <p>Enter your coupon code if you have one</p>
+          <input type="text" placeholder="Coupon code">
+          <a href="#" class="btn">Apply Coupon</a>
+        </div>
+
+        <div class="cart-form">
+          <h3>Estimate shipping and tax</h3>
+          <p>Enter your destination to get a shipping estimate</p>
+          <input type="text" placeholder="Country">
+          <input type="text" placeholder="State/Province">
+          <input type="text" placeholder="Zip/Postal Code">
+          <a href="#" class="btn">Estimate</a>
+        </div>
+
+        <div class="cart-form cart-totals">
+          <h3>Cart Totals</h3>
+          <p><span>Subtotal</span><span>$20.60</span></p>
+          <p><span>Delivery</span><span>$0.00</span></p>
+          <p><span>Discount</span><span>$3.00</span></p>
+          <p class="total"><span>Total</span><span>$17.60</span></p>
+          <a href="checkout.html" class="btn">Proceed to Checkout</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="newsletter-box">
+      <div class="newsletter-flex">
+        <div>
+          <h2>Subscribe to our Newsletter</h2>
+          <span>Get e-mail updates about our latest shops and special offers</span>
+        </div>
+        <div>
+          <form action="#">
+            <input type="email" placeholder="Enter email address">
+            <input type="submit" value="Subscribe">
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-top">
+        <div style="flex:1; min-width:220px;">
+          <h2>Vegefoods</h2>
+          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+          <div class="social" style="display:flex; gap:14px; margin-top:25px;">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div style="flex:1; min-width:180px;">
+          <h2>Menu</h2>
+          <ul>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Journal</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div style="flex:1; min-width:200px;">
+          <h2>Help</h2>
+          <ul>
+            <li><a href="#">Shipping Information</a></li>
+            <li><a href="#">Returns & Exchange</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <div style="flex:1; min-width:220px;">
+          <h2>Have a Questions?</h2>
+          <ul>
+            <li><i class="fas fa-map-marker-alt" style="margin-right:10px;color:#82ae46;"></i>203 Fake St. Mountain View, San Francisco, USA</li>
+            <li><i class="fas fa-phone" style="margin-right:10px;color:#82ae46;"></i><a href="tel://23923929210">+2 392 3929 210</a></li>
+            <li><i class="fas fa-envelope" style="margin-right:10px;color:#82ae46;"></i><a href="mailto:info@yourdomain.com">info@yourdomain.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
+        All rights reserved | Made with <span style="color:#e63946;">❤</span> by 
+        <a href="https://colorlib.com" target="_blank" style="color:#82ae46;">Colorlib</a>
+      </div>
+    </div>
+  </footer>
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+// dropdown toggle on click (desktop + mobile)
+document.querySelectorAll('.dropdown > a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault(); // stop link jump
+    this.parentElement.classList.toggle('open');
+  });
+});
+</script>
+
+</body>
+</html>

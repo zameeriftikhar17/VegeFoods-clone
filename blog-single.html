@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Single - Vegefoods</title>
+
+  <!-- Internal CSS -->
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background: #fff;
+    }
+    a { text-decoration: none; }
+
+    /* Topbar */
+    .topbar {
+      background: #f5f5f5;
+      color: #555;
+      font-size: 14px;
+      padding: 8px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topbar .contact-info span { margin-right: 20px; }
+    .topbar .social a { margin-left: 10px; color: #555; transition:.3s; }
+    .topbar .social a:hover { color: #82ae46; }
+
+    /* Navbar */
+    header {
+      background: #82ae46;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #fff;
+    }
+    nav ul { list-style: none; display: flex; gap: 20px; }
+    nav ul li a {
+      color: #fff;
+      font-size: 15px;
+      transition: .3s;
+    }
+    nav ul li a:hover { color: #000; }
+    nav ul li a.active { font-weight: bold; text-decoration: underline; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background: url('images/bg_1.jpg') center/cover no-repeat;
+      height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-content h2 { font-size: 36px; }
+
+    /* Blog Layout */
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+      gap: 30px;
+    }
+    .blog-content {
+      flex: 3;
+    }
+    .blog-content img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .blog-content h3 {
+      font-size: 26px;
+      margin: 15px 0;
+      color: #82ae46;
+    }
+    .blog-content p {
+      margin-bottom: 15px;
+      color: #555;
+    }
+    .blog-content blockquote {
+      border-left: 4px solid #82ae46;
+      padding-left: 15px;
+      margin: 20px 0;
+      font-style: italic;
+      color: #444;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      flex: 1;
+    }
+    .sidebar-section {
+      margin-bottom: 30px;
+    }
+    .sidebar-section h4 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #82ae46;
+      padding-bottom: 5px;
+    }
+    .sidebar-section ul {
+      list-style: none;
+    }
+    .sidebar-section ul li {
+      margin-bottom: 10px;
+    }
+    .sidebar-section ul li a {
+      color: #555;
+      transition: .3s;
+    }
+    .sidebar-section ul li a:hover {
+      color: #82ae46;
+    }
+    .tags span {
+      display: inline-block;
+      background: #f1f1f1;
+      color: #555;
+      font-size: 13px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin: 4px;
+      cursor: pointer;
+      transition:.3s;
+    }
+    .tags span:hover { background:#82ae46; color:#fff; }
+
+    /* Comments */
+    .comments {
+      margin-top: 40px;
+    }
+    .comments h4 {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    .comment {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .comment img {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+    }
+    .comment-content h5 { margin: 0; font-size: 15px; }
+    .comment-content span { font-size: 12px; color: #777; }
+    .comment-content p { margin: 5px 0; }
+
+    /* Comment Form */
+    .comment-form {
+      margin-top: 30px;
+    }
+    .comment-form input,
+    .comment-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: inherit;
+    }
+    .comment-form button {
+      background: #82ae46;
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition:.3s;
+    }
+    .comment-form button:hover { background:#6a913a; }
+
+    /* Footer */
+    footer {
+      background:#333;
+      color:#fff;
+      padding:20px;
+      text-align:center;
+      font-size:14px;
+      margin-top:40px;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .container { flex-direction: column; }
+      .sidebar { order: -1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="contact-info">
+      <span>📞 +1235 2355 98</span>
+      <span>✉ info@yourdomain.com</span>
+    </div>
+    <div class="social">
+      <a href="#">🌐</a>
+      <a href="#">👍</a>
+      <a href="#">🐦</a>
+      <a href="#">📷</a>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">Vegefoods</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="blog-single.html" class="active">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Blog Single</h2>
+    </div>
+  </section>
+
+  <!-- Blog Layout -->
+  <div class="container">
+
+    <!-- Main Blog Content -->
+    <div class="blog-content">
+      <img src="images/image_1.jpg" alt="Blog">
+      <h3>Why Organic Foods Matter</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae ligula eu nunc fermentum pulvinar. Integer laoreet ultricies urna, at elementum nisi egestas ut.</p>
+      <p>Aliquam erat volutpat. Nulla facilisi. Sed porttitor, lorem nec cursus tincidunt, magna sapien interdum massa, nec luctus risus ligula nec est.</p>
+
+      <blockquote>“Good food is the foundation of genuine happiness.”</blockquote>
+
+      <p>Morbi eu pharetra lorem, non venenatis nisl. Etiam scelerisque, purus eget pulvinar iaculis, turpis sem porttitor nibh, ac luctus erat velit nec orci.</p>
+
+      <!-- Comments -->
+      <div class="comments">
+        <h4>3 Comments</h4>
+
+        <div class="comment">
+          <img src="images/person_1.jpg" alt="">
+          <div class="comment-content">
+            <h5>Garreth Smith <span> - Jan 10, 2025</span></h5>
+            <p>Really loved this article. Very insightful!</p>
+          </div>
+        </div>
+
+        <div class="comment">
+          <img src="images/person_2.jpg" alt="">
+          <div class="comment-content">
+            <h5>Sarah Johnson <span> - Jan 11, 2025</span></h5>
+            <p>I totally agree with the benefits of organic food.</p>
+          </div>
+        </div>
+
+        <div class="comment">
+          <img src="images/person_3.jpg" alt="">
+          <div class="comment-content">
+            <h5>David Lee <span> - Jan 12, 2025</span></h5>
+            <p>Great read. Keep posting more like this!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comment Form -->
+      <div class="comment-form">
+        <h4>Leave a Comment</h4>
+        <form>
+          <input type="text" placeholder="Your Name">
+          <input type="email" placeholder="Your Email">
+          <textarea rows="5" placeholder="Your Comment"></textarea>
+          <button type="submit">Post Comment</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="#">Vegetables</a></li>
+          <li><a href="#">Fruits</a></li>
+          <li><a href="#">Organic Foods</a></li>
+          <li><a href="#">Tips & Recipes</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h4>Recent Blogs</h4>
+        <ul>
+          <li><a href="#">5 Benefits of Organic Vegetables</a></li>
+          <li><a href="#">Healthy Recipes with Fruits</a></li>
+          <li><a href="#">Why Local Farms Matter</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <h4>Tag Cloud</h4>
+        <div class="tags">
+          <span>Organic</span>
+          <span>Fruits</span>
+          <span>Vegetables</span>
+          <span>Healthy</span>
+          <span>Recipes</span>
+          <span>Eco</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-top">
+        <div style="flex:1; min-width:220px;">
+          <h2>Vegefoods</h2>
+          <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+          <div class="social" style="display:flex; gap:12px; margin-top:20px;">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <div style="flex:1; min-width:180px;">
+          <h2>Menu</h2>
+          <ul>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Journal</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div style="flex:1; min-width:180px;">
+          <h2>Help</h2>
+          <ul>
+            <li><a href="#">Shipping Information</a></li>
+            <li><a href="#">Returns & Exchange</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div style="flex:1; min-width:220px;">
+          <h2>Have a Questions?</h2>
+          <ul>
+            <li><i class="fas fa-map-marker-alt" style="margin-right:8px; color:#82ae46;"></i>203 Fake St. Mountain View, San Francisco, California, USA</li>
+            <li><i class="fas fa-phone" style="margin-right:8px; color:#82ae46;"></i><a href="tel://23923929210">+2 392 3929 210</a></li>
+            <li><i class="fas fa-envelope" style="margin-right:8px; color:#82ae46;"></i><a href="mailto:info@yourdomain.com">info@yourdomain.com</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
+        All rights reserved | This template is made with <span style="color:#e63946;">❤</span> by 
+        <a href="https://colorlib.com" target="_blank" style="color:#82ae46;">Colorlib</a>
+      </div>
+    </div>
+  </footer>
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+// dropdown toggle on click (desktop + mobile)
+document.querySelectorAll('.dropdown > a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault(); // stop link jump
+    this.parentElement.classList.toggle('open');
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vegefoods - Shop</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Internal CSS -->
+  <style>
+      body, html {margin:0; padding:0; font-family:'Poppins', sans-serif;}
+    a{text-decoration:none;color:inherit;}
+    img{max-width:100%; display:block;}
+    h1,h2,h3,h4{margin:0;font-family:'Lora', serif;}
+
+     /* Reset + font */
+body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0;}
+
+/* Topbar */
+.topbar {
+  background: #82ae46;
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 0;
+}
+.topbar .container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+}
+.topbar-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.topbar a { color: #fff; text-decoration: none; }
+.topbar a:hover { text-decoration: underline; }
+
+/* Navbar */
+nav {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  position: relative;
+}
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color:#82ae46;
+  letter-spacing: 1px;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li { position: relative; }
+.nav-links a {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.2s ease;
+}
+.nav-links a:hover,
+.nav-links a.active { color:#82ae46; }
+
+.menu-toggle {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Dropdown hidden by default */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 10px 0;
+  min-width: 180px;
+  z-index: 10;
+}
+.dropdown-menu li { padding: 0; }
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: #000;
+  font-size: 14px;
+}
+.dropdown-menu a:hover {
+  background: #f8f9fa;
+  color: #82ae46;
+}
+
+/* When dropdown is open */
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    z-index: 1000;
+  }
+  .nav-links.show { display: flex; }
+
+  .nav-links a {
+    padding: 12px 0;
+    font-size: 15px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  /* mobile dropdown inline */
+  .dropdown-menu {
+    position: static;
+    background: #f8f6f6;
+    box-shadow: none;
+    padding-left: 15px;
+  }
+}
+
+
+    /* Hero */
+    .hero-wrap {height:280px; background:url('images/bg_1.jpg') center/cover no-repeat; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; position:relative;}
+    .hero-wrap::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.5);}
+    .hero-wrap h1, .hero-wrap .breadcrumbs {position:relative;z-index:1; color:#fff;}
+    .hero-wrap h1 {font-size:42px; margin:10px 0;}
+    .breadcrumbs a {color:#fff; text-decoration:none;}
+    .breadcrumbs span {margin:0 5px;}
+
+    /* Categories */
+    .product-category {list-style:none; padding:0; margin:30px 0; display:flex; justify-content:center; gap:15px; flex-wrap:wrap;}
+    .product-category li a {border:1px solid #ccc; padding:6px 15px; border-radius:20px; text-decoration:none; color:#000; font-weight:500;}
+    .product-category li a.active, .product-category li a:hover {background:#82ae46; color:#fff; border-color:#82ae46;}
+
+    /* Products */
+    .container {max-width:1200px; margin:auto; padding:40px 20px;}
+    .product-grid {display:grid; grid-template-columns:repeat(4, 1fr); gap:20px;}
+    .product {border:1px solid #eee; border-radius:6px; overflow:hidden; transition:.3s; background:#fff;}
+    .product:hover {box-shadow:0 4px 12px rgba(0,0,0,0.15);}
+    .product img {width:100%; height:220px; object-fit:cover;}
+    .text {padding:15px; text-align:center;}
+    .text h3 {margin:0; font-size:16px;}
+    .pricing {margin:10px 0;}
+    .price-dc {text-decoration:line-through; color:#aaa; margin-right:6px;}
+    .price-sale {color:#82ae46; font-weight:600;}
+    .bottom-area a {margin:0 4px; font-size:18px; color:#82ae46; text-decoration:none;}
+    .bottom-area a:hover {color:#000;}
+
+    /* Pagination */
+    .block-27 ul {list-style:none; display:flex; justify-content:center; padding:0;}
+    .block-27 li {margin:0 5px;}
+    .block-27 a, .block-27 span {padding:6px 12px; border:1px solid #ccc; border-radius:4px; color:#000; text-decoration:none;}
+    .block-27 .active span {background:#82ae46; color:#fff; border-color:#82ae46;}
+
+    /* Footer */
+    footer{background:#fff;color:#333;padding:70px 20px 30px;}
+    footer .footer-container{max-width:1200px;margin:auto;}
+    footer .footer-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px;margin-bottom:40px;}
+    footer h2{font-size:16px;font-weight:600;margin-bottom:15px;}
+    footer p,footer li,footer a{font-size:14px;color:#666;text-decoration:none;line-height:1.8;}
+    footer ul{list-style:none;padding:0;margin:0;}
+    footer .social a{width:35px;height:35px;border:1px solid #ccc;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#333;font-size:14px;transition:0.3s;}
+    footer .social a:hover{background:#82ae46;color:#fff;border-color:#82ae46;}
+    footer .footer-bottom{text-align:center;border-top:1px solid #eee;padding-top:20px;font-size:14px;color:#777;}
+
+    /* Responsive */
+    @media(max-width:992px){.product-grid{grid-template-columns:repeat(2, 1fr);}}
+    @media(max-width:768px){
+      .nav-links {display:none; flex-direction:column; width:100%; background:#fafbfc; margin-top:10px; border-radius:6px; padding:10px 0;}
+      .nav-links.active {display:flex;}
+      .nav-links a {margin:10px 0; text-align:center;}
+      .menu-toggle {display:block;}
+    }
+    @media(max-width:576px){.product-grid{grid-template-columns:1fr;}.product img{height:180px;}.topbar .container{flex-direction:column;gap:5px;text-align:center;}}
+  </style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-item">
+      <i class="fas fa-phone-alt"></i>
+      <a href="tel:+1235235598">+1235 2355 98</a>
+    </div>
+    <div class="topbar-item">
+      <i class="fas fa-envelope"></i>
+      <a href="mailto:youremail@email.com">youremail@email.com</a>
+    </div>
+    <div class="topbar-item">
+      <i class="fas fa-truck"></i>
+      3-5 Business days delivery & Free Returns
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo">VEGEFOODS</div>
+  <div class="menu-toggle" id="mobile-menu" onclick="toggleMenu()">☰ MENU</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="navbar-brand">Home</a></li>
+    <li class="dropdown">
+      <a href="#">Shop ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="shop.html" class="active">Shop</a></li>
+        <li><a href="wishlist.html">Wishlist</a></li>
+        <li><a href="single-product.html">Single Product</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="cart.html">🛒 [0]</a></li>
+  </ul>
+</nav>
+ 
+
+  <!-- Hero -->
+  <div class="hero-wrap">
+    <p class="breadcrumbs"><a href="index.html">Home</a><span>/</span><span>Shop</span></p>
+    <h1>Our Shop</h1>
+  </div>
+
+  <!-- Categories -->
+  <div class="container">
+    <ul class="product-category">
+      <li><a href="#" class="active">All</a></li>
+      <li><a href="#">Vegetables</a></li>
+      <li><a href="#">Fruits</a></li>
+      <li><a href="#">Juice</a></li>
+      <li><a href="#">Dried</a></li>
+    </ul>
+  </div>
+
+  <!-- Products -->
+  <div class="container">
+    <div class="product-grid">
+      <div class="product"><a href="#"><img src="images/product-1.jpg"><div class="text"><h3>Bell Pepper</h3><div class="pricing"><span class="price-dc">$120.00</span><span class="price-sale">$80.00</span></div><div class="bottom-area"><a href="#">☰</a><a href="#">🛒</a><a href="#">❤</a></div></div></a></div>
+      <div class="product"><a href="#"><img src="images/product-2.jpg"><div class="text"><h3>Strawberry</h3><div class="pricing"><span>$120.00</span></div><div class="bottom-area"><a href="#">☰</a><a href="#">🛒</a><a href="#">❤</a></div></div></a></div>
+      <div class="product"><a href="#"><img src="images/product-3.jpg"><div class="text"><h3>Green Beans</h3><div class="pricing"><span>$120.00</span></div><div class="bottom-area"><a href="#">☰</a><a href="#">🛒</a><a href="#">❤</a></div></div></a></div>
+      <div class="product"><a href="#"><img src="images/product-4.jpg"><div class="text"><h3>Purple Cabbage</h3><div class="pricing"><span>$120.00</span></div><div class="bottom-area"><a href="#">☰</a><a href="#">🛒</a><a href="#">❤</a></div></div></a></div>
+      <div class="product"><a href="#"><img src="images/product-5.jpg"><div class="text"><h3>Tomato</h3><div class="pricing"><span>$120.00</span></div><div class="bottom-area"><a href="#">☰</a><a href="#">🛒</a><a href="#">❤</a></div></div></a></div>
+      <div class="product"><a href="#"><img src="images/product-6.jpg"><div class="text"><h3>Broccoli</h3><div class="pricing"><span>$120.00</span></div><div class="bottom-area"><a href="#">☰</a><a href="#">🛒</a><a href="#">❤</a></div></div></a></div>
+      <div class="product"><a href="#"><img src="images/product-7.jpg"><div class="text"><h3>Carrots</h3><div class="pricing"><span>$120.00</span></div><div class="bottom-area"><a href="#">☰</a><a href="#">🛒</a><a href="#">❤</a></div></div></a></div>
+      <div class="product"><a href="#"><img src="images/product-8.jpg"><div class="text"><h3>Fruit Juice</h3><div class="pricing"><span>$120.00</span></div><div class="bottom-area"><a href="#">☰</a><a href="#">🛒</a><a href="#">❤</a></div></div></a></div>
+      <div class="product"><a href="#"><img src="images/product-9.jpg"><div class="text"><h3>Onion</h3><div class="pricing"><span>$120.00</span></div><div class="bottom-area"><a href="#">☰</a><a href="#">🛒</a><a href="#">❤</a></div></div></a></div>
+      <div class="product"><a href="#"><img src="images/product-10.jpg"><div class="text"><h3>Apple</h3><div class="pricing"><span>$120.00</span></div><div class="bottom-area"><a href="#">☰</a><a href="#">🛒</a><a href="#">❤</a></div></div></a></div>
+      <div class="product"><a href="#"><img src="images/product-11.jpg"><div class="text"><h3>Garlic</h3><div class="pricing"><span>$120.00</span></div><div class="bottom-area"><a href="#">☰</a><a href="#">🛒</a><a href="#">❤</a></div></div></a></div>
+      <div class="product"><a href="#"><img src="images/product-12.jpg"><div class="text"><h3>Chilli</h3><div class="pricing"><span>$120.00</span></div><div class="bottom-area"><a href="#">☰</a><a href="#">🛒</a><a href="#">❤</a></div></div></a></div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="block-27" style="margin:40px 0;">
+    <ul>
+      <li><a href="#">&lt;</a></li>
+      <li class="active"><span>1</span></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">&gt;</a></li>
+    </ul>
+  </div>
+
+   <!-- Newsletter -->
+  <section style="padding:50px 0;background:#f9f9f9;">
+  <div style="max-width:1100px;margin:0 auto;padding:30px;background:#fff;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.08);">
+    
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;">
+      
+      <!-- Left Text -->
+      <div style="flex:1;min-width:280px;">
+        <h2 style="font-size:24px;font-weight:700;color:#333;margin-bottom:8px;">Subscribe to our Newsletter</h2>
+        <span style="font-size:15px;color:#666;">Get e-mail updates about our latest shops and special offers</span>
+      </div>
+      
+      <!-- Right Form -->
+      <div style="flex:1;min-width:280px;">
+        <form action="#" style="display:flex;gap:10px;align-items:center;">
+          <input type="email" placeholder="Enter email address" 
+                 style="flex:1;padding:12px 15px;border:1px solid #ddd;border-radius:30px;font-size:15px;outline:none;">
+          <input type="submit" value="Subscribe" 
+                 style="background:#82ae46;color:#fff;border:none;padding:12px 25px;border-radius:30px;font-weight:600;cursor:pointer;transition:0.3s;">
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+   <!-- Footer -->
+   <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-top">
+        <!-- Column 1 -->
+        <div style="flex:1; min-width:220px;">
+          <h2 style="font-size:18px; font-weight:700; margin-bottom:15px;">Vegefoods</h2>
+          <p style="font-size:14px; line-height:1.8; color:#666;">
+            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.
+          </p>
+          <div class="social" style="display:flex; gap:14px; margin-top:20px;">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div style="flex:1; min-width:180px;">
+          <h2>Menu</h2>
+          <ul>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Journal</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div style="flex:1; min-width:200px;">
+          <h2>Help</h2>
+          <ul>
+            <li><a href="#">Shipping Information</a></li>
+            <li><a href="#">Returns & Exchange</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4 -->
+        <div style="flex:1; min-width:220px;">
+          <h2>Have a Questions?</h2>
+          <ul>
+            <li style="margin-bottom:8px;">
+              <i class="fas fa-map-marker-alt" style="margin-right:8px;color:#82ae46;"></i>
+              203 Fake St. Mountain View, San Francisco, USA
+            </li>
+            <li style="margin-bottom:8px;">
+              <i class="fas fa-phone" style="margin-right:8px;color:#82ae46;"></i>
+              <a href="tel://23923929210">+2 392 3929 210</a>
+            </li>
+            <li>
+              <i class="fas fa-envelope" style="margin-right:8px;color:#82ae46;"></i>
+              <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
+        All rights reserved | Made with <span style="color:#e63946;">❤</span> by 
+        <a href="https://colorlib.com" target="_blank" style="color:#82ae46;">Colorlib</a>
+      </div>
+    </div>
+  </footer>
+<script>
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+    mobileMenu.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+    // Shop dropdown
+    const shopToggle = document.getElementById("shopToggle");
+    const shopMenu = document.getElementById("shopMenu");
+    shopToggle.addEventListener("click", function(e) {
+      e.preventDefault();
+      shopMenu.style.display = shopMenu.style.display === "block" ? "none" : "block";
+    });
+    document.addEventListener("click", function(e) {
+      if (!shopToggle.contains(e.target) && !shopMenu.contains(e.target)) {
+        shopMenu.style.display = "none";
+      }
+    });
+  </script>
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+// dropdown toggle on click (desktop + mobile)
+document.querySelectorAll('.dropdown > a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault(); // stop link jump
+    this.parentElement.classList.toggle('open');
+  });
+});
+</script>
+
+</body>
+</html>

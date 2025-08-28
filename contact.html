@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vegefoods - Contact</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    body, html {margin:0; padding:0; font-family:'Poppins', sans-serif;}
+    a{text-decoration:none;color:inherit;}
+    img{max-width:100%; display:block;}
+    h1,h2,h3,h4{margin:0;font-family:'Lora', serif;}
+
+    /* Reset + font */
+body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0;}
+
+/* Topbar */
+.topbar {
+  background: #82ae46;
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 0;
+}
+.topbar .container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+}
+.topbar-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.topbar a { color: #fff; text-decoration: none; }
+.topbar a:hover { text-decoration: underline; }
+
+/* Navbar */
+nav {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  position: relative;
+}
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color:#82ae46;
+  letter-spacing: 1px;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li { position: relative; }
+.nav-links a {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.2s ease;
+}
+.nav-links a:hover,
+.nav-links a.active { color:#82ae46; }
+
+.menu-toggle {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Dropdown hidden by default */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 10px 0;
+  min-width: 180px;
+  z-index: 10;
+}
+.dropdown-menu li { padding: 0; }
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: #000;
+  font-size: 14px;
+}
+.dropdown-menu a:hover {
+  background: #f8f9fa;
+  color: #82ae46;
+}
+
+/* When dropdown is open */
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    z-index: 1000;
+  }
+  .nav-links.show { display: flex; }
+
+  .nav-links a {
+    padding: 12px 0;
+    font-size: 15px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  /* mobile dropdown inline */
+  .dropdown-menu {
+    position: static;
+    background: #f8f6f6;
+    box-shadow: none;
+    padding-left: 15px;
+  }
+}
+
+    .hero-wrap {
+      background-size:cover;
+      background-position:center;
+      position:relative;
+      padding:150px 20px 100px;
+      color:#fff;
+      text-align:center;
+    }
+    .hero-wrap::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.5);
+    }
+    .hero-wrap h1 {
+      position:relative;
+      z-index:1;
+      font-size:48px;
+      font-weight:700;
+    }
+
+    /* Contact Section */
+    .ftco-section {
+      padding:80px 80px;
+    }
+    .bg-light {background:#f8f9fa;}
+
+    .contact-info {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-between;
+      gap:20px;
+      margin-bottom:50px;
+    }
+    .contact-info .info {
+      flex:1;
+      min-width:220px;
+      background:#fff;
+      padding:25px 20px;
+      text-align:center;
+      border-radius:6px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    }
+    .contact-info .info span {display:block; font-weight:600; margin-bottom:8px;}
+
+    .contact-wrapper {
+      display:flex;
+      gap:30px;
+      flex-wrap:wrap;
+    }
+    #map {
+      flex:1;
+      min-width:350px;
+      height:400px;
+      background:#eaeaea;
+      border-radius:6px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:#666;
+      font-size:14px;
+    }
+    .contact-form {
+      flex:1;
+      min-width:350px;
+      background:#fff;
+      padding:40px;
+      border-radius:6px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      display:flex;
+      flex-direction:column;
+    }
+    .contact-form input, .contact-form textarea {
+      width:100%;
+      padding:14px;
+      margin-bottom:18px;
+      border:1px solid #ddd;
+      border-radius:4px;
+    }
+    .contact-form input[type="submit"] {
+      background:#82ae46;
+      color:#fff;
+      border:none;
+      font-weight:600;
+      cursor:pointer;
+      border-radius:30px;
+      padding:14px;
+      transition:.3s;
+    }
+    .contact-form input[type="submit"]:hover {background:#6f963a;}
+
+
+    /* Footer */
+    footer {background:#fff; color:#333; font-family:'Poppins', sans-serif; padding:60px 20px 30px;}
+    footer .footer-container {max-width:1200px;margin:auto;}
+    footer .footer-top {display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px; margin-bottom:40px;}
+    footer h2 {font-size:16px;font-weight:600;margin-bottom:15px;}
+    footer p, footer li, footer a {font-size:14px;color:#666;line-height:1.8;text-decoration:none;}
+    footer ul {list-style:none; padding:0; margin:0;}
+    footer .social a {width:35px;height:35px;border:1px solid #ccc;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#333;font-size:14px;}
+    footer .footer-bottom {text-align:center;border-top:1px solid #eee;padding-top:20px;font-size:14px;color:#777;}
+
+    
+  </style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-item">
+      <i class="fas fa-phone-alt"></i>
+      <a href="tel:+1235235598">+1235 2355 98</a>
+    </div>
+    <div class="topbar-item">
+      <i class="fas fa-envelope"></i>
+      <a href="mailto:youremail@email.com">youremail@email.com</a>
+    </div>
+    <div class="topbar-item">
+      <i class="fas fa-truck"></i>
+      3-5 Business days delivery & Free Returns
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo">VEGEFOODS</div>
+  <div class="menu-toggle" id="mobile-menu" onclick="toggleMenu()">☰ MENU</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="navbar-brand">Home</a></li>
+    <li class="dropdown">
+      <a href="#">Shop ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="wishlist.html">Wishlist</a></li>
+        <li><a href="single-product.html">Single Product</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="cart.html">🛒 [0]</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<div class="hero-wrap" style="background-image:url('images/bg_1.jpg');">
+  <h1>CONTACT US</h1>
+</div>
+
+<!-- Contact Section -->
+<section class="ftco-section contact-section bg-light">
+  <div class="container">
+    <div class="contact-info">
+      <div class="info"><span>Address</span>198 West 21th Street, Suite 721, New York NY 10016</div>
+      <div class="info"><span>Phone</span><a href="tel://1234567920">+ 1235 2355 98</a></div>
+      <div class="info"><span>Email</span><a href="mailto:info@yoursite.com">info@yoursite.com</a></div>
+      <div class="info"><span>Website</span><a href="#">yoursite.com</a></div>
+    </div>
+    <div class="contact-wrapper">
+      <div id="map">Oops! Something went wrong. (Google Maps placeholder)</div>
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name">
+        <input type="text" placeholder="Your Email">
+        <input type="text" placeholder="Subject">
+        <textarea cols="30" rows="6" placeholder="Message"></textarea>
+        <input type="submit" value="Send Message">
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-top">
+      <div style="flex:1; min-width:220px;">
+        <h2>Vegefoods</h2>
+        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
+        <div class="social" style="display:flex; gap:12px; margin-top:20px;">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div style="flex:1; min-width:180px;">
+        <h2>Menu</h2>
+        <ul>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Journal</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div style="flex:1; min-width:180px;">
+        <h2>Help</h2>
+        <ul>
+          <li><a href="#">Shipping Information</a></li>
+          <li><a href="#">Returns & Exchange</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div style="flex:1; min-width:220px;">
+        <h2>Have a Questions?</h2>
+        <ul>
+          <li><i class="fas fa-map-marker-alt" style="margin-right:8px; color:#82ae46;"></i>203 Fake St. Mountain View, San Francisco, California, USA</li>
+          <li><i class="fas fa-phone" style="margin-right:8px; color:#82ae46;"></i><a href="tel://23923929210">+2 392 3929 210</a></li>
+          <li><i class="fas fa-envelope" style="margin-right:8px; color:#82ae46;"></i><a href="mailto:info@yourdomain.com">info@yourdomain.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
+      All rights reserved | This template is made with <span style="color:#e63946;">❤</span> by 
+      <a href="https://colorlib.com" target="_blank" style="color:#82ae46;">Colorlib</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+// dropdown toggle on click (desktop + mobile)
+document.querySelectorAll('.dropdown > a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault(); // stop link jump
+    this.parentElement.classList.toggle('open');
+  });
+});
+</script>
+
+
+</body>
+</html>

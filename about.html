@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Vegefoods - About</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- Internal CSS -->
+  <style>
+    body, html {margin:0; padding:0; font-family:'Poppins', sans-serif;}
+    a{text-decoration:none;color:inherit;}
+    img{max-width:100%; display:block;}
+    h1,h2,h3,h4{margin:0;font-family:'Lora', serif;}
+
+  
+
+     /* Reset + font */
+body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0;}
+
+/* Topbar */
+.topbar {
+  background: #82ae46;
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 0;
+}
+.topbar .container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+}
+.topbar-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.topbar a { color: #fff; text-decoration: none; }
+.topbar a:hover { text-decoration: underline; }
+/* Navbar */
+nav {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  position: relative;
+}
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color:#82ae46;
+  letter-spacing: 1px;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li { position: relative; }
+.nav-links a {
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.2s ease;
+}
+.nav-links a:hover,
+.nav-links a.active { color:#82ae46; }
+
+.menu-toggle {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Dropdown hidden by default */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  list-style: none;
+  padding: 10px 0;
+  min-width: 180px;
+  z-index: 10;
+}
+.dropdown-menu li { padding: 0; }
+.dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  color: #000;
+  font-size: 14px;
+}
+.dropdown-menu a:hover {
+  background: #f8f9fa;
+  color: #82ae46;
+}
+
+/* When dropdown is open */
+.dropdown.open .dropdown-menu {
+  display: block;
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #fff;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    z-index: 1000;
+  }
+  .nav-links.show { display: flex; }
+
+  .nav-links a {
+    padding: 12px 0;
+    font-size: 15px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  /* mobile dropdown inline */
+  .dropdown-menu {
+    position: static;
+    background: #f8f6f6;
+    box-shadow: none;
+    padding-left: 15px;
+  }
+}
+
+    /* Hero */
+    .hero-wrap { background-size: cover; background-position: center; height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; }
+    .hero-wrap h1 { font-size: 48px; font-weight: 700; }
+    .hero-wrap .breadcrumbs { margin-bottom: 10px; }
+
+  /* About Section Full Width */
+.about-section { 
+    display: flex; 
+    flex-wrap: wrap; 
+    background: #f8f9fa; 
+    padding: 80px 10vw; /* 80px top/bottom, 10% of viewport width on sides */
+    gap: 40px; /* space between image and text */
+    justify-content: center; 
+    box-sizing: border-box;
+}
+
+.about-section .img { 
+    flex: 1 1 400px; /* flexible but minimum 400px */
+    background-size: cover; 
+    background-position: center; 
+    min-height: 400px; 
+    position: relative; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 12px; 
+}
+
+.about-section .img a { 
+    font-size: 40px; 
+    color: #fff; 
+    background: rgba(0,0,0,0.5); 
+    padding: 40px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.about-section .text { 
+    flex: 1 1 400px; 
+    padding: 30px; 
+    max-width: 700px; /* prevents text from stretching too wide */
+}
+
+.about-section .text h2 { 
+    margin-bottom: 20px; 
+    font-size: 36px; 
+}
+
+
+    /* Newsletter */
+    .newsletter { display: flex; justify-content: space-between; align-items: center; background: #f1f1f1; padding: 30px; flex-wrap: wrap; }
+    .newsletter h2 { font-size: 22px; margin-bottom: 5px; }
+    .newsletter span { font-size: 14px; color: #555; }
+    .subscribe-form { display: flex; }
+    .subscribe-form input[type="text"] { padding: 10px; border: 1px solid #ccc; border-radius: 3px 0 0 3px; flex: 1; }
+    .subscribe-form input[type="submit"] { padding: 10px 15px; border: none; background: #f96d00; color: #fff; cursor: pointer; border-radius: 0 3px 3px 0; }
+
+    
+
+    /* Testimony Section */
+    .testimony-section { padding: 50px 0; background: #f8f9fa; text-align: center; }
+    .testimony-section .heading-section { margin-bottom: 40px; }
+    .carousel-testimony { display: flex; overflow-x: auto; scroll-behavior: smooth; }
+    .testimony-wrap { background: #fff; padding: 20px; margin: 0 10px; border-radius: 5px; min-width: 250px; flex: 0 0 auto; }
+    .user-img { width: 80px; height: 80px; border-radius: 50%; background-size: cover; background-position: center; margin: 0 auto 15px; position: relative; }
+    .quote { position: absolute; bottom: -10px; right: -10px; background: #f96d00; color: #fff; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+
+    /* Services */
+    .ftco-services{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
+    .service-item{flex:1;min-width:220px;background:#fff;padding:30px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,0.1);text-align:center;}
+    .service-item .icon{font-size:40px;color:#82ae46;margin-bottom:10px;}
+      /* Footer */
+    footer{background:#fff;color:#333;padding:70px 20px 30px;}
+    footer .footer-container{max-width:1200px;margin:auto;}
+    footer .footer-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px;margin-bottom:40px;}
+    footer h2{font-size:16px;font-weight:600;margin-bottom:15px;}
+    footer p,footer li,footer a{font-size:14px;color:#666;text-decoration:none;line-height:1.8;}
+    footer ul{list-style:none;padding:0;margin:0;}
+    footer .social a{width:35px;height:35px;border:1px solid #ccc;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#333;font-size:14px;transition:0.3s;}
+    footer .social a:hover{background:#82ae46;color:#fff;border-color:#82ae46;}
+    footer .footer-bottom{text-align:center;border-top:1px solid #eee;padding-top:20px;font-size:14px;color:#777;}
+    @media(max-width:768px){.cart-forms{flex-direction:column;}footer .footer-top{flex-direction:column;}}
+
+    /* Mobile */
+    @media(max-width:768px){
+      .nav-links {display:none; flex-direction:column; width:100%; background:#f8f9fa; margin-top:10px; border-radius:6px; padding:10px 0;}
+      .nav-links.active {display:flex;}
+      .nav-links a {margin:10px 0; text-align:center;}
+      .menu-toggle {display:block;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-item">
+      <i class="fas fa-phone-alt"></i>
+      <a href="tel:+1235235598">+1235 2355 98</a>
+    </div>
+    <div class="topbar-item">
+      <i class="fas fa-envelope"></i>
+      <a href="mailto:youremail@email.com">youremail@email.com</a>
+    </div>
+    <div class="topbar-item">
+      <i class="fas fa-truck"></i>
+      3-5 Business days delivery & Free Returns
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav>
+  <div class="logo">VEGEFOODS</div>
+  <div class="menu-toggle" id="mobile-menu" onclick="toggleMenu()">☰ MENU</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="navbar-brand">Home</a></li>
+    <li class="dropdown">
+      <a href="#">Shop ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="wishlist.html">Wishlist</a></li>
+        <li><a href="single-product.html">Single Product</a></li>
+        <li><a href="cart.html">Cart</a></li>
+        <li><a href="checkout.html">Checkout</a></li>
+      </ul>
+    </li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="cart.html">🛒 [0]</a></li>
+  </ul>
+</nav>
+
+
+  <!-- Hero -->
+  <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');">
+    <div>
+      <p class="breadcrumbs"><a href="index.html">Home</a> > About us</p>
+      <h1>About us</h1>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="img" style="background-image: url('images/about.jpg');">
+      <a href="https://vimeo.com/45830194">▶</a>
+    </div>
+    <div class="text">
+      <h2>Welcome to Vegefoods an eCommerce website</h2>
+      <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics.</p>
+      <p>But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+      <p><a href="#" style="display:inline-block; background:#f96d00; color:#fff; padding:10px 20px; border-radius:3px;">Shop now</a></p>
+    </div>
+  </section>
+
+ <!-- Newsletter -->
+  <section style="padding:50px 0;background:#f9f9f9;">
+  <div style="max-width:1100px;margin:0 auto;padding:30px;background:#fff;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.08);">
+    
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;">
+      
+      <!-- Left Text -->
+      <div style="flex:1;min-width:280px;">
+        <h2 style="font-size:24px;font-weight:700;color:#333;margin-bottom:8px;">Subscribe to our Newsletter</h2>
+        <span style="font-size:15px;color:#666;">Get e-mail updates about our latest shops and special offers</span>
+      </div>
+      
+      <!-- Right Form -->
+      <div style="flex:1;min-width:280px;">
+        <form action="#" style="display:flex;gap:10px;align-items:center;">
+          <input type="email" placeholder="Enter email address" 
+                 style="flex:1;padding:12px 15px;border:1px solid #ddd;border-radius:30px;font-size:15px;outline:none;">
+          <input type="submit" value="Subscribe" 
+                 style="background:#82ae46;color:#fff;border:none;padding:12px 25px;border-radius:30px;font-weight:600;cursor:pointer;transition:0.3s;">
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Counter Section -->
+<section class="counter-section" style="background-image:url('images/bg_3.jpg'); background-size:cover; background-position:center; padding:80px 0;">
+  <div class="container" style="display:flex; justify-content:space-around; flex-wrap:wrap; max-width:1200px; margin:0 auto;">
+
+    <!-- Counter 1 -->
+    <div class="counter-wrap" style="flex:1; min-width:200px; text-align:center; color:#000;">
+      <div class="number" style="font-size:32px; font-weight:700;">10,000</div>
+      <span style="font-size:14px; letter-spacing:2px; text-transform:uppercase;">Happy Customers</span>
+    </div>
+
+    <!-- Counter 2 -->
+    <div class="counter-wrap" style="flex:1; min-width:200px; text-align:center; color:#000;">
+      <div class="number" style="font-size:32px; font-weight:700;">100</div>
+      <span style="font-size:14px; letter-spacing:2px; text-transform:uppercase;">Branches</span>
+    </div>
+
+    <!-- Counter 3 -->
+    <div class="counter-wrap" style="flex:1; min-width:200px; text-align:center; color:#000;">
+      <div class="number" style="font-size:32px; font-weight:700;">1,000</div>
+      <span style="font-size:14px; letter-spacing:2px; text-transform:uppercase;">Partners</span>
+    </div>
+
+    <!-- Counter 4 -->
+    <div class="counter-wrap" style="flex:1; min-width:200px; text-align:center; color:#000;">
+      <div class="number" style="font-size:32px; font-weight:700;">100</div>
+      <span style="font-size:14px; letter-spacing:2px; text-transform:uppercase;">Awards</span>
+    </div>
+
+  </div>
+</section>
+
+
+   <!-- Testimonials -->
+<section style="padding:40px 10px;">
+  <h2 style="text-align:center;margin-bottom:10px;">Our satisfied customer says</h2>
+  <h3 style="text-align:center;margin-bottom:25px; color:#555; font-weight:normal; max-width:700px; margin-left:auto; margin-right:auto;">
+    Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, 
+    there live the blind texts. Separated they live in
+  </h3>
+
+  <div style="max-width:1000px; margin:auto; overflow:hidden; position:relative;">
+    <div class="testimonial-track" id="testimonyTrack" 
+         style="display:flex; width:calc(5 * 33.333%); transition:transform .5s ease;">
+
+      <!-- Customer 1 -->
+      <div class="testimonial" style="flex:0 0 33.333%; padding:10px; text-align:center; box-sizing:border-box;">
+        <div style="width:70px;height:70px;border-radius:50%;margin:auto;background:url('images/person_1.jpg') center/cover no-repeat;margin-bottom:8px;"></div>
+        <p style="font-size:14px; line-height:1.4;">“Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, 
+    there live the blind texts. Separated they live in”</p>
+        <p style="margin:5px 0;"><b>Garreth Smith</b></p>
+        <span style="font-size:12px; color:#666;">Marketing Manager</span>
+      </div>
+
+      <!-- Customer 2 -->
+      <div class="testimonial" style="flex:0 0 33.333%; padding:10px; text-align:center; box-sizing:border-box;">
+        <div style="width:70px;height:70px;border-radius:50%;margin:auto;background:url('images/person_2.jpg') center/cover no-repeat;margin-bottom:8px;"></div>
+        <p style="font-size:14px; line-height:1.4;">“Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, 
+    there live the blind texts. Separated they live in”</p>
+        <p style="margin:5px 0;"><b>Sarah Johnson</b></p>
+        <span style="font-size:12px; color:#666;">UI Designer</span>
+      </div>
+
+      <!-- Customer 3 -->
+      <div class="testimonial" style="flex:0 0 33.333%; padding:10px; text-align:center; box-sizing:border-box;">
+        <div style="width:70px;height:70px;border-radius:50%;margin:auto;background:url('images/person_3.jpg') center/cover no-repeat;margin-bottom:8px;"></div>
+        <p style="font-size:14px; line-height:1.4;">“Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, 
+    there live the blind texts. Separated they live in”</p>
+        <p style="margin:5px 0;"><b>David Lee</b></p>
+        <span style="font-size:12px; color:#666;">Web Developer</span>
+      </div>
+
+      <!-- Customer 4 -->
+      <div class="testimonial" style="flex:0 0 33.333%; padding:10px; text-align:center; box-sizing:border-box;">
+        <div style="width:70px;height:70px;border-radius:50%;margin:auto;background:url('images/person_4.jpg') center/cover no-repeat;margin-bottom:8px;"></div>
+        <p style="font-size:14px; line-height:1.4;">“Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, 
+    there live the blind texts. Separated they live in”</p>
+        <p style="margin:5px 0;"><b>Linda Brown</b></p>
+        <span style="font-size:12px; color:#666;">Chef</span>
+      </div>
+
+      <!-- Customer 5 -->
+      <div class="testimonial" style="flex:0 0 33.333%; padding:10px; text-align:center; box-sizing:border-box;">
+        <div style="width:70px;height:70px;border-radius:50%;margin:auto;background:url('images/person_5.jpg') center/cover no-repeat;margin-bottom:8px;"></div>
+        <p style="font-size:14px; line-height:1.4;">“Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, 
+    there live the blind texts. Separated they live in”</p>
+        <p style="margin:5px 0;"><b>Michael Adams</b></p>
+        <span style="font-size:12px; color:#666;">Entrepreneur</span>
+      </div>
+
+    </div>
+
+    <!-- 3 Correct Dots -->
+    <div style="text-align:center; margin-top:10px;">
+      <span class="testimony-dot active" onclick="showTestimony(0)" style="display:inline-block;width:10px;height:10px;margin:0 4px;border-radius:50%;background:#82ae46;cursor:pointer;"></span>
+      <span class="testimony-dot" onclick="showTestimony(1)" style="display:inline-block;width:10px;height:10px;margin:0 4px;border-radius:50%;background:#ccc;cursor:pointer;"></span>
+      <span class="testimony-dot" onclick="showTestimony(2)" style="display:inline-block;width:10px;height:10px;margin:0 4px;border-radius:50%;background:#ccc;cursor:pointer;"></span>
+    </div>
+  </div>
+</section>
+
+<script>
+  var testimonyIndex = 0;  
+  const testimonyTrack = document.getElementById('testimonyTrack');
+  const testimonyDots = document.querySelectorAll('.testimony-dot');
+
+  function showTestimony(i) {
+    testimonyIndex = i;
+    testimonyTrack.style.transform = `translateX(-${i * (100/3)}%)`; // shift by 1 customer
+    testimonyDots.forEach(dot => dot.style.background = "#ccc");
+    testimonyDots[i].style.background = "#82ae46";
+  }
+</script>
+  <!-- Services -->
+ <section style="padding: 60px 0; background-color: #fff;">
+  <div style="max-width: 1200px; margin: auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+
+    <!-- Free Shipping -->
+    <div style="flex: 1 1 200px; text-align: center;">
+      <div style="width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 50%; background-color: #e8c5e8; display: flex; justify-content: center; align-items: center;">
+        <!-- Truck Icon -->
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/delivery.png" alt="Free Shipping">
+      </div>
+      <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 5px; color: #000;">FREE SHIPPING</h3>
+      <span style="font-size: 13px; color: #888;">ON ORDER OVER $100</span>
+    </div>
+
+    <!-- Always Fresh -->
+    <div style="flex: 1 1 200px; text-align: center;">
+      <div style="width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 50%; background-color: #e8dcc2; display: flex; justify-content: center; align-items: center;">
+        <!-- Fresh Products Icon -->
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/vegetarian-food.png" alt="Always Fresh">
+      </div>
+      <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 5px; color: #000;">ALWAYS FRESH</h3>
+      <span style="font-size: 13px; color: #888;">PRODUCT WELL PACKAGE</span>
+    </div>
+
+    <!-- Superior Quality -->
+    <div style="flex: 1 1 200px; text-align: center;">
+      <div style="width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 50%; background-color: #c9e7e7; display: flex; justify-content: center; align-items: center;">
+        <!-- Award Icon -->
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/prize.png" alt="Superior Quality">
+      </div>
+      <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 5px; color: #000;">SUPERIOR QUALITY</h3>
+      <span style="font-size: 13px; color: #888;">QUALITY PRODUCTS</span>
+    </div>
+
+    <!-- Support -->
+    <div style="flex: 1 1 200px; text-align: center;">
+      <div style="width: 80px; height: 80px; margin: 0 auto 15px auto; border-radius: 50%; background-color: #b5d78c; display: flex; justify-content: center; align-items: center;">
+        <!-- Support Icon -->
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/customer-support.png" alt="Support">
+      </div>
+      <h3 style="font-size: 16px; font-weight: 700; margin-bottom: 5px; color: #000;">SUPPORT</h3>
+      <span style="font-size: 13px; color: #888;">24/7 SUPPORT</span>
+    </div>
+
+  </div>
+</section>
+
+ <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-top">
+        <!-- Column 1 -->
+        <div style="flex:1; min-width:220px;">
+          <h2 style="font-size:18px; font-weight:700; margin-bottom:15px;">Vegefoods</h2>
+          <p style="font-size:14px; line-height:1.8; color:#666;">
+            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.
+          </p>
+          <div class="social" style="display:flex; gap:14px; margin-top:20px;">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div style="flex:1; min-width:180px;">
+          <h2>Menu</h2>
+          <ul>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="blog.html">Journal</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div style="flex:1; min-width:200px;">
+          <h2>Help</h2>
+          <ul>
+            <li><a href="#">Shipping Information</a></li>
+            <li><a href="#">Returns & Exchange</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4 -->
+        <div style="flex:1; min-width:220px;">
+          <h2>Have a Questions?</h2>
+          <ul>
+            <li style="margin-bottom:8px;">
+              <i class="fas fa-map-marker-alt" style="margin-right:8px;color:#82ae46;"></i>
+              203 Fake St. Mountain View, San Francisco, USA
+            </li>
+            <li style="margin-bottom:8px;">
+              <i class="fas fa-phone" style="margin-right:8px;color:#82ae46;"></i>
+              <a href="tel://23923929210">+2 392 3929 210</a>
+            </li>
+            <li>
+              <i class="fas fa-envelope" style="margin-right:8px;color:#82ae46;"></i>
+              <a href="mailto:info@yourdomain.com">info@yourdomain.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
+        All rights reserved | Made with <span style="color:#e63946;">❤</span> by 
+        <a href="https://colorlib.com" target="_blank" style="color:#82ae46;">Colorlib</a>
+      </div>
+    </div>
+  </footer>
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("show");
+}
+
+// dropdown toggle on click (desktop + mobile)
+document.querySelectorAll('.dropdown > a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault(); // stop link jump
+    this.parentElement.classList.toggle('open');
+  });
+});
+</script>
+
+
+</body>
+</html>
